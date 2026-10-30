@@ -1,0 +1,44 @@
+{
+  "name": "artifact-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Turn Claude artifacts (HTML designs) into native, editable After Effects compositions.",
+  "main": "pipeline/artifact-bridge.js",
+  "bin": {
+    "artifact-bridge": "pipeline/artifact-bridge.js"
+  },
+  "scripts": {
+    "bridge": "node pipeline/artifact-bridge.js",
+    "preflight": "node pipeline/preflight.js",
+    "ingest": "node pipeline/ingest-artifact.js",
+    "build": "node pipeline/build-scene.js",
+    "export": "node pipeline/export-jsx.js",
+    "verify": "node pipeline/verify-artifact.js",
+    "test": "node --test test/*.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saxenaxoxo/artifact-bridge.git"
+  },
+  "keywords": [
+    "after-effects",
+    "claude",
+    "artifacts",
+    "html",
+    "motion-graphics",
+    "extendscript"
+  ],
+  "author": "Aryan Saxena",
+  "license": "MIT",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=18"
+  },
+  "bugs": {
+    "url": "https://github.com/saxenaxoxo/artifact-bridge/issues"
+  },
+  "homepage": "https://github.com/saxenaxoxo/artifact-bridge#readme",
+  "dependencies": {
+    "playwright": "^1.60.0"
+  }
+}

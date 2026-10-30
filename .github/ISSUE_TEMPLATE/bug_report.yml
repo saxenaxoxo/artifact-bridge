@@ -1,0 +1,46 @@
+name: Bug report
+description: Something went wrong turning an artifact into a comp
+labels: [bug]
+body:
+  - type: input
+    id: ae-version
+    attributes:
+      label: After Effects version
+      description: Help > About After Effects (or "not used" for the headless .jsx path)
+      placeholder: "e.g. 26.5"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: "e.g. macOS 26.1 / Windows 11"
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node.js version
+      placeholder: "output of node -v"
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The exact command you ran, and the smallest artifact (HTML) that shows the problem, attached or pasted.
+      placeholder: |
+        1. node pipeline/artifact-bridge.js my-artifact.html --jsx out.jsx
+        2. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected vs what happened
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Output
+      description: Terminal output (re-run with AB_DEBUG=1 for full details) and the output of `npm run preflight`.
+      render: text

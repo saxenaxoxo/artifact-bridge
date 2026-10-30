@@ -1,0 +1,78 @@
+{
+  "comp": { "name": "SelfTest", "width": 800, "height": 600, "fps": 30, "duration": 4, "bg": "#101010" },
+  "scenes": [
+    {
+      "name": "ST",
+      "start": 0,
+      "duration": 4,
+      "layers": [
+        {
+          "type": "text",
+          "name": "WigglePos",
+          "text": { "value": "wiggle", "font": "Arial-BoldMT", "size": 48, "fill": "#FFFFFF", "justification": "center" },
+          "transform": { "position": [400, 120] },
+          "expressions": { "position": "wiggle(3,40)", "rotation": "time*30" }
+        },
+        {
+          "type": "text",
+          "name": "Counter",
+          "text": { "value": "0", "font": "Arial-BoldMT", "size": 64, "fill": "#00FF88", "justification": "center" },
+          "transform": { "position": [400, 220] },
+          "animations": [
+            { "property": "sourceText", "keyframes": [ { "t": 0, "v": "0" }, { "t": 0.5, "v": "50" }, { "t": 1, "v": "100" } ] }
+          ]
+        },
+        {
+          "type": "text",
+          "name": "StrokeText",
+          "text": { "value": "stroked", "font": "Arial-BoldMT", "size": 40, "fill": "#FFFFFF", "stroke": "#FF0000", "strokeWidth": 3, "justification": "center" },
+          "transform": { "position": [400, 320] }
+        },
+        {
+          "type": "shape",
+          "name": "TrimPath",
+          "shape": {
+            "kind": "path",
+            "path": { "vertices": [[-150, 60], [0, -60], [150, 60]], "closed": false },
+            "stroke": "#FF4444",
+            "strokeWidth": 6,
+            "trim": { "end": 0 }
+          },
+          "transform": { "position": [400, 450] },
+          "animations": [
+            {
+              "property": ["ADBE Root Vectors Group", "ADBE Vector Group", "ADBE Vectors Group", "ADBE Vector Filter - Trim", "ADBE Vector Trim End"],
+              "keyframes": [ { "t": 0, "v": 0 }, { "t": 1.2, "v": 100, "ease": "easeOut" } ]
+            }
+          ]
+        },
+        {
+          "type": "solid",
+          "name": "BlurSolid",
+          "solid": { "color": "#3366AA" },
+          "transform": { "scale": [30, 30], "position": [620, 470] },
+          "effects": [
+            {
+              "matchName": "ADBE Gaussian Blur 2",
+              "params": { "Blurriness": 0 },
+              "animations": [
+                { "property": "Blurriness", "keyframes": [ { "t": 0, "v": 0 }, { "t": 1, "v": 50, "ease": "easeInOut" } ] }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "solid",
+          "name": "Masked",
+          "solid": { "color": "#AA8833" },
+          "masks": [
+            { "vertices": [[100, 100], [300, 100], [300, 300], [100, 300]], "closed": true, "mode": "add", "name": "BoxMask" }
+          ],
+          "animations": [
+            { "property": "opacity", "keyframes": [ { "t": 0, "v": 0 }, { "t": 0.5, "v": 50, "hold": true }, { "t": 1, "v": 100 } ] }
+          ]
+        }
+      ]
+    }
+  ]
+}

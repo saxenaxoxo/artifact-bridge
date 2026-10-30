@@ -1,0 +1,93 @@
+/* Artifact Bridge — panel skin. Dark, compact, AE-native feeling. The host theme is
+   near-#262626; we hardcode a matching dark scheme (AE panels are always dark-family). */
+
+:root {
+  --bg: #232323;
+  --surface: #2b2b2b;
+  --surface-2: #323232;
+  --line: #3d3d3d;
+  --text: #e8e8e8;
+  --muted: #9a9a9a;
+  --accent: #7c8cff;
+  --accent-strong: #97a3ff;
+  --ok: #5fd38a;
+  --warn: #e8c468;
+  --err: #f07a7a;
+  --mono: "SF Mono", Menlo, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; padding: 0; height: 100%;
+  background: var(--bg); color: var(--text);
+  font: 12.5px/1.45 -apple-system, "Segoe UI", sans-serif;
+  display: flex; flex-direction: column;
+}
+body { padding: 10px; gap: 10px; overflow-y: auto; }
+
+#topbar { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 2px 0; }
+.brand { display: flex; align-items: center; gap: 7px; font-size: 13px; }
+.muted { color: var(--muted); font-size: 11.5px; }
+
+.dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; flex: none; }
+.dot.wait { background: var(--warn); }
+.dot.ok { background: var(--ok); }
+.dot.err { background: var(--err); }
+
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  padding: 10px; display: flex; flex-direction: column; gap: 8px; flex: none;
+}
+.card.grow { flex: 1 1 auto; min-height: 220px; }
+.card-head { display: flex; align-items: center; justify-content: space-between; }
+.card-head h2 { margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+
+.toggle { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--muted); cursor: pointer; }
+.toggle input { accent-color: var(--accent); }
+
+#dropzone {
+  border: 1.5px dashed var(--line); border-radius: 8px; padding: 18px 12px; text-align: center;
+  transition: border-color 0.15s, background 0.15s; outline: none;
+}
+#dropzone.armed, #dropzone:focus { border-color: var(--accent); background: rgba(124, 140, 255, 0.06); }
+#dropzone p { margin: 2px 0; }
+.linklike { background: none; border: none; color: var(--accent-strong); cursor: pointer; font: inherit; padding: 0; text-decoration: underline; }
+
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+button {
+  background: var(--accent); color: #101225; border: none; border-radius: 6px;
+  padding: 6px 12px; font: inherit; font-weight: 600; cursor: pointer;
+}
+button:disabled { opacity: 0.45; cursor: default; }
+button.ghost { background: var(--surface-2); color: var(--text); border: 1px solid var(--line); }
+
+.progress { height: 4px; border-radius: 3px; background: var(--surface-2); overflow: hidden; }
+.progress .bar { height: 100%; width: 0%; background: var(--accent); transition: width 0.3s; }
+
+.log {
+  margin: 0; padding: 8px; background: #1d1d1d; border: 1px solid var(--line); border-radius: 6px;
+  font-family: var(--mono); font-size: 10.5px; white-space: pre-wrap; word-break: break-word;
+  max-height: 180px; overflow-y: auto; min-height: 52px;
+}
+.log .ok { color: var(--ok); }
+.log .err { color: var(--err); }
+
+.chat-log {
+  flex: 1 1 auto; overflow-y: auto; display: flex; flex-direction: column; gap: 7px;
+  padding: 4px 2px; min-height: 120px;
+}
+.msg { border-radius: 8px; padding: 7px 10px; max-width: 94%; white-space: pre-wrap; word-break: break-word; }
+.msg.user { background: rgba(124, 140, 255, 0.16); align-self: flex-end; }
+.msg.claude { background: var(--surface-2); align-self: flex-start; }
+.msg.sys { color: var(--muted); font-size: 11.5px; background: none; padding: 2px 4px; }
+.msg.tool { color: var(--warn); font-family: var(--mono); font-size: 10.5px; background: none; padding: 0 4px; }
+.msg.err { color: var(--err); }
+
+.chat-input { display: flex; gap: 7px; align-items: flex-end; }
+.chat-input textarea {
+  flex: 1; resize: none; background: var(--surface-2); border: 1px solid var(--line);
+  border-radius: 7px; color: var(--text); font: inherit; padding: 7px 9px;
+}
+.chat-input textarea:focus { outline: none; border-color: var(--accent); }
+
+#footer { padding: 0 2px 2px; }

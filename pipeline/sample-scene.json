@@ -1,0 +1,63 @@
+{
+  "comp": { "name": "Promo", "width": 1920, "height": 1080, "fps": 30, "duration": 6, "bg": "#0B0B0F" },
+  "scenes": [
+    {
+      "name": "Intro",
+      "start": 0,
+      "duration": 3,
+      "layers": [
+        {
+          "type": "text",
+          "name": "Title",
+          "text": { "value": "Hello", "font": "Arial-BoldMT", "size": 140, "fill": "#FFFFFF", "tracking": 0, "justification": "center" },
+          "transform": { "anchor": "center", "position": [960, 540], "opacity": 100 },
+          "animations": [
+            { "property": "opacity",  "keyframes": [ { "t": 0, "v": 0 }, { "t": 1, "v": 100, "ease": "easeOut" } ] },
+            { "property": "position", "keyframes": [ { "t": 0, "v": [960, 620], "ease": "easeOut" }, { "t": 1, "v": [960, 540], "ease": "easeInOut" } ] }
+          ],
+          "expressions": { "rotation": "Math.sin(time*3)*2" },
+          "effects": [
+            { "matchName": "ADBE Drop Shadow", "name": "Drop Shadow", "params": { "Distance": 10, "Softness": 24, "Opacity": 160 } }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Outro",
+      "start": 3,
+      "duration": 3,
+      "layers": [
+        {
+          "type": "text",
+          "name": "Tagline",
+          "text": { "value": "Made with MCP", "font": "Arial-BoldMT", "size": 90, "fill": "#FFFFFF", "tracking": 2, "justification": "center" },
+          "transform": { "anchor": "center", "position": [960, 560], "opacity": 100 },
+          "animations": [
+            { "property": "opacity", "keyframes": [ { "t": 0.3, "v": 0 }, { "t": 1.1, "v": 100, "ease": "easeOut" } ] }
+          ]
+        },
+        {
+          "type": "shape",
+          "name": "Badge",
+          "shape": { "kind": "ellipse", "size": [320, 320], "fill": "#4F8CFF" },
+          "transform": { "anchor": "center", "position": [960, 470], "scale": [100, 100], "opacity": 100 },
+          "animations": [
+            { "property": "scale",   "keyframes": [ { "t": 0, "v": [0, 0], "ease": "easeOut" }, { "t": 0.9, "v": [100, 100], "ease": "easeInOut" } ] },
+            { "property": "opacity", "keyframes": [ { "t": 0, "v": 0 }, { "t": 0.5, "v": 100 } ] }
+          ],
+          "expressions": { "rotation": "time*30" },
+          "effects": [
+            {
+              "matchName": "ADBE Gaussian Blur 2",
+              "name": "Gaussian Blur",
+              "params": { "Blurriness": 0 },
+              "animations": [
+                { "property": "Blurriness", "keyframes": [ { "t": 0, "v": 30 }, { "t": 0.8, "v": 0, "ease": "easeOut" } ] }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

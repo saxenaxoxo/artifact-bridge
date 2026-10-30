@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Artifact Bridge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header id="topbar">
+    <div class="brand">
+      <span id="status-dot" class="dot wait" title="Checking AE connection…"></span>
+      <strong>Artifact Bridge</strong>
+    </div>
+    <div id="host-info" class="muted">connecting…</div>
+  </header>
+
+  <!-- ── BUILD ─────────────────────────────────────────────────────────── -->
+  <section class="card">
+    <div class="card-head">
+      <h2>Build from artifact</h2>
+      <label class="toggle" title="Scene-stepped sampling for chip-player explainers (recommended for multi-scene artifacts)">
+        <input type="checkbox" id="scenes-toggle" checked /> <span>scene mode</span>
+      </label>
+    </div>
+    <div id="dropzone" tabindex="0">
+      <p><strong>Drop an HTML artifact here</strong></p>
+      <p class="muted">or <button id="pick-file" class="linklike" type="button">choose a file…</button></p>
+      <input type="file" id="file-input" accept=".html,.htm" hidden />
+    </div>
+    <div class="row">
+      <button id="build-btn" type="button" disabled>Build into open project</button>
+      <button id="cancel-btn" type="button" class="ghost" hidden>Cancel</button>
+      <span id="picked-name" class="muted"></span>
+    </div>
+    <div class="progress" id="progress" hidden><div class="bar" id="progress-bar"></div></div>
+    <pre id="log" class="log" aria-live="polite"></pre>
+  </section>
+
+  <!-- ── CHAT ──────────────────────────────────────────────────────────── -->
+  <section class="card grow">
+    <div class="card-head">
+      <h2>Claude</h2>
+      <label class="toggle" title="ON: Claude may run shell commands (build/edit the open project) without per-step prompts. OFF: file edits only.">
+        <input type="checkbox" id="autonomy-toggle" checked /> <span>full autonomy</span>
+      </label>
+    </div>
+    <div id="chat-log" class="chat-log">
+      <div class="msg sys">Ask anything about the open project — “build the stock artifact”, “make scene 3 two seconds longer”, “read MCP_Test and report its keyframes”.</div>
+    </div>
+    <form id="chat-form" class="chat-input">
+      <textarea id="chat-text" rows="2" placeholder="Message Claude… (⏎ to send, ⇧⏎ newline)"></textarea>
+      <button id="chat-send" type="submit">Send</button>
+    </form>
+  </section>
+
+  <footer id="footer" class="muted"></footer>
+
+  <script src="lib/CSInterface.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
